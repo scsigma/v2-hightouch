@@ -1,0 +1,1 @@
+This is the basics of how a simple react application with an Express backend works using yarn workspaces
