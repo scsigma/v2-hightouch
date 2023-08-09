@@ -1,1 +1,3 @@
-This is the basics of how a simple react application with an Express backend works using yarn workspaces
+### yarn start
+
+This will simultaneously start the backend server as well as the frontend
