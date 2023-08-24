@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { client, useConfig } from '@sigmacomputing/plugin';
-import { ChakraProvider, Button, Cente, Box, Flex } from '@chakra-ui/react';
+import { ChakraProvider, Button, Box } from '@chakra-ui/react';
 
 // ---- Sigma Config -----
 client.config.configureEditorPanel([
