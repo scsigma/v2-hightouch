@@ -82,7 +82,7 @@ const App = () => {
         style={{ width: '200px'}}
         onClick={() => {
           if (allSigmaDataReceived) {
-            triggerSync(listCreatorSyncId, contactSyncId, apiToken)
+            // triggerSync(listCreatorSyncId, contactSyncId, apiToken)
             handleClick()
           } 
         }}
