@@ -4,23 +4,24 @@ import { ChakraProvider, Button, Box } from '@chakra-ui/react';
 
 // ---- Sigma Config -----
 client.config.configureEditorPanel([
-  // { name: "source", type: "element"},
   { name: "Hightouch API Token", type: "text"},
-  { name: "List Creator syncId", type: "text"},
-  { name: "Contact List Update syncId", type: "text"},
+  { name: "Sync ID", type: "text"},
   { name: "Button Text", type: "text", defaultValue: "Export to HubSpot"}
 ]);
 // -----------------------
 
 const allSigmaDataReceived = (config) => {
-  return config['Hightouch API Token'] && config['List Creator syncId'] && config['Contact List Update syncId'];
+  return config['Hightouch API Token'] && config['Sync ID'];
 }
 
 const App = () => {
 
+  // Sigma Config Inputs
   const [apiToken, setApiToken] = useState(null);
-  const [listCreatorSyncId, setListCreatorSyncId] = useState(null);
-  const [contactSyncId, setContactSyncId] = useState(null);
+  const [syncId, setSyncId] = useState(null);
+  const [buttonString, setButtonString] = useState(null);
+  
+  // Data and Event Handling
   const [allData, setAllData] = useState(false);
   const [buttonClicked, setButtonClicked] = useState(false);
 
@@ -36,25 +37,20 @@ const App = () => {
     setAllData(allSigmaDataReceived(config))
     if (allData) {
       setApiToken(config['Hightouch API Token']);
-      setListCreatorSyncId(config['List Creator syncId']);
-      setContactSyncId(config['Contact List Update syncId']);
+      setSyncId(config['Sync ID']);
+      if (!config['Button Text']) {
+        setButtonString('Export to HubSpot')
+      } else {
+        setButtonString(config['Button Text']);
+      }
     }
   }, [config])
 
 
 
-  const triggerSync = async (listCreatorSyncId, contactSyncId, apiToken) => {
-    // create or update the new campaign list
-    await fetch(`https://api.hightouch.com/api/v1/syncs/${listCreatorSyncId}/trigger`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiToken}`
-      }
-    })
-
-    // create or update the overall contact list
-    await fetch(`https://api.hightouch.com/api/v1/syncs/${contactSyncId}/trigger`, {
+  const triggerSync = async (syncId, apiToken) => {
+    // api request with the specified sync Id
+    await fetch(`https://api.hightouch.com/api/v1/syncs/${syncId}/trigger`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -82,11 +78,11 @@ const App = () => {
         style={{ width: '200px'}}
         onClick={() => {
           if (allSigmaDataReceived) {
-            // triggerSync(listCreatorSyncId, contactSyncId, apiToken)
+            triggerSync(syncId, apiToken)
             handleClick()
           } 
         }}
-        >Export to Hubspot</Button>
+        >{buttonString}</Button>
         {buttonClicked && 
           <div style={{position: 'absolute', width: '50px', left: '76%'}}>✅</div>
         }
