@@ -58,6 +58,8 @@ If you or your admin has already registered the plugin, you can skip this step
 
 4. Enter your Hightouch API token, Sync ID for the Sync you'd like to run, and the button text (default is "Export to HubSpot")
 
+test
+
 
 
 
