@@ -58,7 +58,18 @@ If you or your admin has already registered the plugin, you can skip this step
 
 4. Enter your Hightouch API token, Sync ID for the Sync you'd like to run, and the button text (default is "Export to HubSpot")
 
-test
+<img width="321" alt="Screenshot 2023-08-31 at 3 17 51 PM" src="https://github.com/scsigma/v2-hightouch/assets/120054623/8ee46686-0450-442b-8155-5028813a6abc">
+
+
+![Screenshot 2023-08-24 at 12 48 45 PM](https://github.com/scsigma/v2-hightouch/assets/120054623/9ea55106-b550-4f2c-868a-ca67ef09223d)
+
+![Screenshot 2023-08-24 at 12 53 08 PM](https://github.com/scsigma/v2-hightouch/assets/120054623/96882d9e-b1bb-4135-ac03-7c4e784fb1e7)
+
+
+
+
+
+
 
 
 
