@@ -53,6 +53,7 @@ const App = () => {
     // --------- ENTER ALL API REQUESTS HERE ----------
     await fetch(`https://api.hightouch.com/api/v1/syncs/${syncId}/trigger`, {
       method: 'POST',
+      mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${apiToken}`
