@@ -55,7 +55,8 @@ const App = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiToken}`
+        'Authorization': `Bearer ${apiToken}`,
+        'Access-Control-Allow-Origin': '*'
       }
     })
   }
