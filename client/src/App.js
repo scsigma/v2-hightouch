@@ -50,6 +50,7 @@ const App = () => {
 
   const triggerSync = async (syncId, apiToken) => {
     // api request with the specified sync Id
+    // --------- ENTER ALL API REQUESTS HERE ----------
     await fetch(`https://api.hightouch.com/api/v1/syncs/${syncId}/trigger`, {
       method: 'POST',
       headers: {
@@ -58,6 +59,8 @@ const App = () => {
       }
     })
   }
+
+  // --------------------------------------------------
 
   const handleClick = () => {
     setButtonClicked(true);
