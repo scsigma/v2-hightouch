@@ -9,8 +9,7 @@
     "server"
   ],
   "scripts": {
-    "start": "concurrently \"yarn workspace server start\" \"yarn workspace client start\"",
-    "build": "concurrently \"yarn workspace server start\" \"yarn workspace client build\"" 
+    "start": "concurrently \"yarn workspace server start\" \"yarn workspace client start\""
   },
   "devDependencies": {
     "concurrently": "^8.2.0"
