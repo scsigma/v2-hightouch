@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { client, useConfig } from '@sigmacomputing/plugin';
 import { ChakraProvider, Button, Box } from '@chakra-ui/react';
+import { sync } from 'framer-motion';
 
 // ---- Sigma Config -----
 client.config.configureEditorPanel([
@@ -51,14 +52,42 @@ const App = () => {
   const triggerSync = async (syncId, apiToken) => {
     // api request with the specified sync Id
     // --------- ENTER ALL API REQUESTS HERE ----------
-    await fetch(`https://api.hightouch.com/api/v1/syncs/${syncId}/trigger`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiToken}`
+    // await fetch(`https://api.hightouch.com/api/v1/syncs/${syncId}/trigger`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'Authorization': `Bearer ${apiToken}`
+    //   }
+    // })
+
+    const res = await fetch('/test' , {
+      method: 'GET',
+      headers :{
+        'Content-Type': 'application/json'
       }
     })
+
+    // console.log('THIS IS RES', res)
+
+    const data = await res.json();
+
+    console.log('THIS IS DATA', data);
+
+
+
+    const hightouchRes = await fetch('/hightouch_sync', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({apiToken: apiToken, syncId: syncId})
+    });
+
+  
+    console.log('HDATA', hightouchRes.status);
+
   }
+
 
   // --------------------------------------------------
 
