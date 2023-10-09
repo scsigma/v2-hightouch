@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "start": "concurrently \"yarn workspace server start\" \"yarn workspace client start\"",
-    "build:all": "yarn workspaces run build --parallel" 
+    "build": "concurrently \"yarn workspace server start\" \"yarn workspace client build\"" 
   },
   "devDependencies": {
     "concurrently": "^8.2.0"
